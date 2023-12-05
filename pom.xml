@@ -6,9 +6,29 @@
   <groupId>com.leptatech</groupId>
   <artifactId>spinalcord</artifactId>
   <version>1.0.0</version>
+  <packaging>jar</packaging>
 
-  <name>spinalcord</name>
-  <url>http://www.example.com</url>
+  <name>SpinalCord SDK for Java</name>
+  <description>SpinalCord SDK for Java is the official library for Java developers to interact with the SpinalCord
+    platform</description>
+  <url>https://www.leptatech.com/spinalcord</url>
+  <inceptionYear>2023</inceptionYear>
+  <organization>
+      <name>Lepta Technologies</name>
+      <url>https://www.leptatech.com/</url>
+  </organization>
+  <licenses>
+      <license>
+          <name>Apache License, Version 2.0</name>
+          <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+      </license>
+  </licenses>
+  <scm>
+      <connection>scm:git:https://github.com/Lepta-Technologies/spinalcord-java.git</connection>
+      <developerConnection>scm:git:https://github.com/Lepta-Technologies/spinalcord-java.git</developerConnection>
+      <url>https://github.com/Lepta-Technologies/spinalcord-java</url>
+      <tag>HEAD</tag>
+  </scm>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
