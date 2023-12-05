@@ -16,13 +16,14 @@ package com.leptatech.spinalcord.fields;
 
 import com.leptatech.spinalcord.exceptions.FieldNotSetException;
 import com.leptatech.spinalcord.utils.BytesBuffer;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UInt16FieldTest
 {
@@ -36,7 +37,7 @@ public class UInt16FieldTest
         try
         {
             uInt16Field.get();
-            Assert.fail();
+            fail();
         }
         catch (FieldNotSetException e)
         {
@@ -52,13 +53,13 @@ public class UInt16FieldTest
         // Check min value
         BytesBuffer minBuffer = new BytesBuffer(buffer.read(3));
         uInt16Field.fromBytes(minBuffer);
-        Assert.assertEquals(new Short((short)0), uInt16Field.get());
-        Assert.assertArrayEquals(minBuffer.get(), uInt16Field.toBytes().get());
+        assertEquals(new Short((short)0), uInt16Field.get());
+        assertArrayEquals(minBuffer.get(), uInt16Field.toBytes().get());
         // Check max value
         BytesBuffer maxBuffer = new BytesBuffer(buffer.read(3));
         uInt16Field.fromBytes(maxBuffer);
-        Assert.assertEquals(new Short((short)65535), uInt16Field.get());
-        Assert.assertArrayEquals(maxBuffer.get(), uInt16Field.toBytes().get());
+        assertEquals(new Short((short)65535), uInt16Field.get());
+        assertArrayEquals(maxBuffer.get(), uInt16Field.toBytes().get());
     }
 
     @Test
@@ -66,9 +67,9 @@ public class UInt16FieldTest
     {
         // Check UInt16Field getBytesLength method
         UInt16Field uInt16Field = new UInt16Field("uInt16Field");
-        Assert.assertEquals(1, uInt16Field.getBytesLength());
+        assertEquals(1, uInt16Field.getBytesLength());
         uInt16Field.set((short)0);
-        Assert.assertEquals(3, uInt16Field.getBytesLength());
+        assertEquals(3, uInt16Field.getBytesLength());
     }
 
     @Test
@@ -76,7 +77,7 @@ public class UInt16FieldTest
     {
         // Check UInt16Field getColumnName method
         UInt16Field uInt16Field = new UInt16Field("uInt16Field");
-        Assert.assertEquals("uInt16Field", uInt16Field.getColumnName());
+        assertEquals("uInt16Field", uInt16Field.getColumnName());
     }
 
     @Test
@@ -88,7 +89,7 @@ public class UInt16FieldTest
         try
         {
             uInt16Field.get();
-            Assert.fail();
+            fail();
         }
         catch (FieldNotSetException e)
         {
@@ -97,11 +98,11 @@ public class UInt16FieldTest
         uInt16Field.set((short)0);
         try
         {
-            Assert.assertEquals(new Short((short)0), uInt16Field.get());
+            assertEquals(new Short((short)0), uInt16Field.get());
         }
         catch (FieldNotSetException e)
         {
-            Assert.fail();
+            fail();
         }
     }
 }

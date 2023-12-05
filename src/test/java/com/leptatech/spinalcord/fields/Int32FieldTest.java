@@ -16,13 +16,14 @@ package com.leptatech.spinalcord.fields;
 
 import com.leptatech.spinalcord.exceptions.FieldNotSetException;
 import com.leptatech.spinalcord.utils.BytesBuffer;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Int32FieldTest
 {
@@ -36,7 +37,7 @@ public class Int32FieldTest
         try
         {
             int32Field.get();
-            Assert.fail();
+            fail();
         }
         catch (FieldNotSetException e)
         {
@@ -52,13 +53,13 @@ public class Int32FieldTest
         // Check min value
         BytesBuffer minBuffer = new BytesBuffer(buffer.read(5));
         int32Field.fromBytes(minBuffer);
-        Assert.assertEquals(new Integer(-2147483648), int32Field.get());
-        Assert.assertArrayEquals(minBuffer.get(), int32Field.toBytes().get());
+        assertEquals(new Integer(-2147483648), int32Field.get());
+        assertArrayEquals(minBuffer.get(), int32Field.toBytes().get());
         // Check max value
         BytesBuffer maxBuffer = new BytesBuffer(buffer.read(5));
         int32Field.fromBytes(maxBuffer);
-        Assert.assertEquals(new Integer(2147483647), int32Field.get());
-        Assert.assertArrayEquals(maxBuffer.get(), int32Field.toBytes().get());
+        assertEquals(new Integer(2147483647), int32Field.get());
+        assertArrayEquals(maxBuffer.get(), int32Field.toBytes().get());
     }
 
     @Test
@@ -66,9 +67,9 @@ public class Int32FieldTest
     {
         // Check Int32Field getBytesLength method
         Int32Field int32Field = new Int32Field("int32Field");
-        Assert.assertEquals(1, int32Field.getBytesLength());
+        assertEquals(1, int32Field.getBytesLength());
         int32Field.set(0);
-        Assert.assertEquals(5, int32Field.getBytesLength());
+        assertEquals(5, int32Field.getBytesLength());
     }
 
     @Test
@@ -76,7 +77,7 @@ public class Int32FieldTest
     {
         // Check Int32Field getColumnName method
         Int32Field int32Field = new Int32Field("int32Field");
-        Assert.assertEquals("int32Field", int32Field.getColumnName());
+        assertEquals("int32Field", int32Field.getColumnName());
     }
 
     @Test
@@ -88,7 +89,7 @@ public class Int32FieldTest
         try
         {
             int32Field.get();
-            Assert.fail();
+            fail();
         }
         catch (FieldNotSetException e)
         {
@@ -97,11 +98,11 @@ public class Int32FieldTest
         int32Field.set(0);
         try
         {
-            Assert.assertEquals(new Integer(0), int32Field.get());
+            assertEquals(new Integer(0), int32Field.get());
         }
         catch (FieldNotSetException e)
         {
-            Assert.fail();
+            fail();
         }
     }
 }
