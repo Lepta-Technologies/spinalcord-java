@@ -16,13 +16,14 @@ package com.leptatech.spinalcord.fields;
 
 import com.leptatech.spinalcord.exceptions.FieldNotSetException;
 import com.leptatech.spinalcord.utils.BytesBuffer;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DoubleFieldTest
 {
@@ -36,7 +37,7 @@ public class DoubleFieldTest
         try
         {
             doubleField.get();
-            Assert.fail();
+            fail();
         }
         catch (FieldNotSetException e)
         {
@@ -52,13 +53,13 @@ public class DoubleFieldTest
         // Check min value
         BytesBuffer minBuffer = new BytesBuffer(buffer.read(9));
         doubleField.fromBytes(minBuffer);
-        Assert.assertEquals(new Double(1.7e-308), doubleField.get());
-        Assert.assertArrayEquals(minBuffer.get(), doubleField.toBytes().get());
+        assertEquals(new Double(1.7e-308), doubleField.get());
+        assertArrayEquals(minBuffer.get(), doubleField.toBytes().get());
         // Check max value
         BytesBuffer maxBuffer = new BytesBuffer(buffer.read(9));
         doubleField.fromBytes(maxBuffer);
-        Assert.assertEquals(new Double(1.7e+308), doubleField.get());
-        Assert.assertArrayEquals(maxBuffer.get(), doubleField.toBytes().get());
+        assertEquals(new Double(1.7e+308), doubleField.get());
+        assertArrayEquals(maxBuffer.get(), doubleField.toBytes().get());
     }
 
     @Test
@@ -66,9 +67,9 @@ public class DoubleFieldTest
     {
         // Check DoubleField getBytesLength method
         DoubleField doubleField = new DoubleField("doubleField");
-        Assert.assertEquals(1, doubleField.getBytesLength());
+        assertEquals(1, doubleField.getBytesLength());
         doubleField.set(0.0);
-        Assert.assertEquals(9, doubleField.getBytesLength());
+        assertEquals(9, doubleField.getBytesLength());
     }
 
     @Test
@@ -76,7 +77,7 @@ public class DoubleFieldTest
     {
         // Check DoubleField getColumnName method
         DoubleField doubleField = new DoubleField("doubleField");
-        Assert.assertEquals("doubleField", doubleField.getColumnName());
+        assertEquals("doubleField", doubleField.getColumnName());
     }
 
     @Test
@@ -88,7 +89,7 @@ public class DoubleFieldTest
         try
         {
             doubleField.get();
-            Assert.fail();
+            fail();
         }
         catch (FieldNotSetException e)
         {
@@ -97,11 +98,11 @@ public class DoubleFieldTest
         doubleField.set(0.0);
         try
         {
-            Assert.assertEquals(new Double(0.0), doubleField.get());
+            assertEquals(new Double(0.0), doubleField.get());
         }
         catch (FieldNotSetException e)
         {
-            Assert.fail();
+            fail();
         }
     }
 }

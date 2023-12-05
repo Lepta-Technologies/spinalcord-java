@@ -20,13 +20,14 @@ import com.leptatech.spinalcord.fields.IField;
 import com.leptatech.spinalcord.fields.Int32Field;
 import com.leptatech.spinalcord.fields.UInt16Field;
 import com.leptatech.spinalcord.utils.BytesBuffer;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ModelTest
 {
@@ -40,7 +41,7 @@ public class ModelTest
         try
         {
             model.doubleField.get();
-            Assert.fail();
+            fail();
         }
         catch (FieldNotSetException e)
         {
@@ -56,11 +57,11 @@ public class ModelTest
         TestModel model = new TestModel();
         model.fromBytes(buffer);
         // Check field values
-        Assert.assertEquals(new Double(0.0), model.doubleField.get());
-        Assert.assertEquals(new Integer(0), model.int32Field.get());
-        Assert.assertEquals(new Short((short)0), model.uInt16Field.get());
+        assertEquals(new Double(0.0), model.doubleField.get());
+        assertEquals(new Integer(0), model.int32Field.get());
+        assertEquals(new Short((short)0), model.uInt16Field.get());
         // Check Model toBytes method
-        Assert.assertArrayEquals(buffer.get(), model.toBytes().get());
+        assertArrayEquals(buffer.get(), model.toBytes().get());
     }
 
     @Test
@@ -71,7 +72,7 @@ public class ModelTest
         BytesBuffer buffer = new BytesBuffer(Files.readAllBytes(resourcePath));
         TestModel model = new TestModel();
         model.fromBytes(buffer);
-        Assert.assertEquals(17, model.getBytesLength());
+        assertEquals(17, model.getBytesLength());
     }
 
     @Test
@@ -86,7 +87,7 @@ public class ModelTest
         IField[] modelFields = model.getFields();
         for (int i = 0; i < modelFields.length; i++)
         {
-            Assert.assertEquals(referenceFields[i].getClass(), modelFields[i].getClass());
+            assertEquals(referenceFields[i].getClass(), modelFields[i].getClass());
         }
     }
 }
