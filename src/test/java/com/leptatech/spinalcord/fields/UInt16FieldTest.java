@@ -47,7 +47,7 @@ public class UInt16FieldTest
     @Test
     public void testFromToBytes() throws IOException, FieldNotSetException {
         Path resourcePath = Paths.get("src", "test", "resources", "com", "leptatech", "spinalcord",
-                "fields", "uInt16.bin");
+                "fields", "uint16.bin");
         BytesBuffer buffer = new BytesBuffer(Files.readAllBytes(resourcePath));
         UInt16Field uInt16Field = new UInt16Field("uInt16Field");
         // Check min value
