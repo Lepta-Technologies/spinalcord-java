@@ -17,7 +17,7 @@ package com.leptatech.spinalcord.models;
 import com.leptatech.spinalcord.fields.IField;
 import com.leptatech.spinalcord.utils.BytesBuffer;
 
-abstract class Model implements IModel
+public abstract class Model implements IModel
 {
     public void clear()
     {
